@@ -1,7 +1,7 @@
 package calculate;
 
 /**
- * This class...
+ * This class contains methods, that rules of whole processes in this program
  * @author Anton Lapin
  * @version date March 14, 2018
  */
