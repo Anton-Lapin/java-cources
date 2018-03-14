@@ -1,74 +1,125 @@
 package calculate;
 
+/**
+ * This class contains several methods for calculating two arguments
+ * @author Anton Lapin
+ * @version date March 14, 2018
+ */
+
 public class Calculator {
 
+    /**
+     * Three main variables of this class.
+     */
+
     private float result = 0;
+    private float first;
+    private float second;
 
-    public float sum(String[] args) {
-        byte first = Byte.valueOf(args[0]);
-        byte second = Byte.valueOf(args[1]);
-        byte sum = (byte) (first + second);
-        result += Float.valueOf(sum);
-        return result;
+    /**
+     * This method implements summation of two arguments
+     * @param args
+     */
+
+    public void sum(String[] args) {
+        this.first = Float.valueOf(args[0]);
+        this.second = Float.valueOf(args[1]);
+        this.result = this.first + this.second;
     }
 
-    public float difference(String[] args) {
-        short first = Short.valueOf(args[0]);
-        short second = Short.valueOf(args[1]);
-        short dif = (short) (first - second);
-        result += Float.valueOf(dif);
-        return result;
+    /**
+     * This method implements difference determination between two arguments
+     * @param args
+     */
+
+    public void difference(String[] args) {
+        this.first = Float.valueOf(args[0]);
+        this.second = Float.valueOf(args[1]);
+        this.result = this.first - this.second;
     }
 
-    public float multiplicate(String[] args) {
-        float first = Float.valueOf(args[0]);
-        float second = Float.valueOf(args[1]);
-        float mult = first * second;
-        result += Float.valueOf(mult);
-        return result;
+    /**
+     * This method implements multiplication of two arguments
+     * @param args
+     * @return result
+     */
+
+    public void multiplicate(String[] args) {
+        this.first = Float.valueOf(args[0]);
+        this.second = Float.valueOf(args[1]);
+        this.result = (this.first * this.second);
     }
 
-    public float division(String[] args) {
-        float first = Float.valueOf(args[0]);
-        float second = Float.valueOf(args[1]);
-        if (second == 0) {
+    /**
+     * This method implements division of first argument into second argument
+     * @param args
+     */
+
+    public void division(String[] args) {
+        this.first = Float.valueOf(args[0]);
+        this.second = Float.valueOf(args[1]);
+        if (this.second == 0) {
             System.out.println("Error! Division by zero!");
         }
-        float div = first / second;
-        result += Float.valueOf(div);
-        return result;
+        this.result = (this.first / this.second);
     }
 
-    public float exponent(String[] args) {
-        long first = Long.valueOf(args[0]);
-        int second = Integer.valueOf(args[1]);
-        long resultIn;
-        if (first != 0) {
-            resultIn = 1;
-            int count = second;
-            if (count >= 0) {
-                do {
-                    resultIn *= first;
-                    count -= 1;
-                } while (count > 0);
-            } else {
-                do {
-                    resultIn /= first;
-                    count += 1;
-                } while (count < 0);
-            }
-        } else {
-            resultIn = first;
-        }
-        result += Float.valueOf(resultIn);
-        return result;
+    /**
+     * This method implements exponentiation
+     * @param args
+     */
+
+    public void exponent(String[] args) {
+        this.first = Float.valueOf(args[0]);
+        this.second = Float.valueOf(args[1]);
+        float resultIn = 1;
+        this.result = (this.second >= 0) ? exponentPos(this.second, resultIn) : exponentNeg(this.second, resultIn);
     }
+
+    /**
+     * This method implements exponentiation with positive power only
+     * @param count
+     * @param resultIn
+     * @return resultIn
+     */
+
+    private float exponentPos(float count, float resultIn) {
+        do {
+            resultIn *= first;
+            count -= 1;
+        } while (count > 0);
+        return resultIn;
+    }
+
+    /**
+     * This method implements exponentiation with negative power only
+     * @param count
+     * @param resultIn
+     * @return resultIn
+     */
+
+    private float exponentNeg(float count, float resultIn) {
+        do {
+            resultIn /= first;
+            count += 1;
+        } while (count < 0);
+        return resultIn;
+    }
+
+    /**
+     * This method returns current result of calculating
+     * @return
+     */
 
     public float getResult() {
-        return result;
+        return this.result;
     }
 
+    /**
+     * This method implements clearing of current result assigns default parameter
+     */
+
     public void clearResult() {
-        result = 0;
+        this.result = 0;
     }
 }
