@@ -6,7 +6,7 @@ package calculate;
  * @version date March 14, 2018
  */
 
-public class Calculator {
+public class Calculator implements Calculatable {
 
     /**
      * Three main variables of this class.
@@ -21,6 +21,7 @@ public class Calculator {
      * @param args
      */
 
+    @Override
     public void sum(String[] args) {
         this.first = Float.valueOf(args[0]);
         this.second = Float.valueOf(args[1]);
@@ -32,6 +33,7 @@ public class Calculator {
      * @param args
      */
 
+    @Override
     public void difference(String[] args) {
         this.first = Float.valueOf(args[0]);
         this.second = Float.valueOf(args[1]);
@@ -44,6 +46,7 @@ public class Calculator {
      * @return result
      */
 
+    @Override
     public void multiplicate(String[] args) {
         this.first = Float.valueOf(args[0]);
         this.second = Float.valueOf(args[1]);
@@ -55,6 +58,7 @@ public class Calculator {
      * @param args
      */
 
+    @Override
     public void division(String[] args) {
         this.first = Float.valueOf(args[0]);
         this.second = Float.valueOf(args[1]);
@@ -69,6 +73,7 @@ public class Calculator {
      * @param args
      */
 
+    @Override
     public void exponent(String[] args) {
         this.first = Float.valueOf(args[0]);
         this.second = Float.valueOf(args[1]);
@@ -111,6 +116,7 @@ public class Calculator {
      * @return
      */
 
+    @Override
     public float getResult() {
         return this.result;
     }
@@ -119,6 +125,7 @@ public class Calculator {
      * This method implements clearing of current result assigns default parameter
      */
 
+    @Override
     public void clearResult() {
         this.result = 0;
     }
