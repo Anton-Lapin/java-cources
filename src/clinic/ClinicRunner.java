@@ -11,21 +11,67 @@ import java.util.ArrayList;
 public class ClinicRunner {
 
     public static void main(String[] args) {
-        ArrayList<Client> clients = new ArrayList<>();
-        ArrayList<Client> clients1;
-        Clinic clinic = new Clinic(clients);
-        clinic.addNewClient(new Client("Ivanov", new Pet("Vaska")));
-        clinic.addNewClient(new Client("Petrov", new Pet("Muska")));
-        clinic.addNewClient(new Client("Sidorov", new Pet("Laska")));
-        clinic.addNewClient(new Client("Fedorov", new Pet("Layka")));
-        clinic.addNewClient(new Client("Nikiforov", new Pet("Muska")));
-        clients1 = clinic.findClientByPetsName("Vaska");
-        for (Client client: clients1) {
-            System.out.println(client.getId() + " " + client.getPet().getName());
+        Clinic clinic = new Clinic(10);
+        Client[] clients;
+        ArrayList<Client> clientArrayList = new ArrayList<>();
+        clinic.addNewClient(0, new Client("Ivanov", new Pet(new Cat("Vaska"))));
+        clinic.addNewClient(1, new Client("Petrov", new Pet(new Dog("Mukha"))));
+        clinic.addNewClient(2, new Client("Ivanov2", new Pet(new Cat("Vaska"))));
+        clinic.addNewClient(3, new Client("Petrov2", new Pet(new Dog("Mukha"))));
+        clinic.addNewClient(0, new Client("Ivanov3", new Pet(new Cat("Vaska"))));
+        clinic.addNewClient(1, new Client("Petrov3", new Pet(new Dog("Mukha"))));
+        clinic.addNewClient(4, new Client("Sidorov", new Pet(new CatDog(
+                new Cat("Vaska"), new Dog("Chappy")))));
+        System.out.println("------------");
+        clients = clinic.getClients();
+
+        System.out.println("------------");
+
+        clientArrayList = clinic.findClientByPetsName("Vaska");
+        for (Client cl: clientArrayList) {
+            System.out.println("client: " + cl.getId() + " pet: " + cl.getPet().getName());
         }
-        clients1 = clinic.findClientByPetsName("Muska");
-        for (Client client: clients1) {
-            System.out.println(client.getId() + " " + client.getPet().getName());
-        }
+//        System.out.println("-------------");
+//        clientArrayList = clinic.findClientById("Ivanov");
+//        for (Client cl: clientArrayList) {
+//            System.out.println("client: " + cl.getId() + " pet: " + cl.getPet().getName());
+//        }
+//        System.out.println("-------------");
+//        System.out.println("Before edit client id");
+//        clients = clinic.getClients();
+//        for (int i = 0; i < clients.length; i++) {
+//            if (clients[i] != null) {
+//                System.out.println("pos: " + i + " client: " + clients[i].getId() + " pet: "
+//                        + clients[i].getPet().getName());
+//            }
+//        }
+//        clinic.editClientsId("Ivanov2", "Sidorov");
+//        System.out.println("After edit client id");
+//        clients = clinic.getClients();
+//        for (int i = 0; i < clients.length; i++) {
+//            if (clients[i] != null) {
+//                System.out.println("pos: " + i + " client: " + clients[i].getId() + " pet: "
+//                        + clients[i].getPet().getName());
+//            }
+//        }
+//        System.out.println("--------------");
+//        System.out.println("before edit pets name");
+//        clients = clinic.getClients();
+//        for (int i = 0; i < clients.length; i++) {
+//            if (clients[i] != null) {
+//                System.out.println("pos: " + i + " client: " + clients[i].getId() + " pet: "
+//                        + clients[i].getPet().getName());
+//            }
+//        }
+//        System.out.println("After edit pets name");
+//        clinic.editPetsNameByClientId("Petrov", "Mos`ka");
+//        clients = clinic.getClients();
+//        for (int i = 0; i < clients.length; i++) {
+//            if (clients[i] != null) {
+//                System.out.println("pos: " + i + " client: " + clients[i].getId() + " pet: "
+//                        + clients[i].getPet().getName());
+//            }
+//        }
+
     }
 }

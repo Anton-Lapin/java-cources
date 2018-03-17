@@ -10,6 +10,10 @@ public class Client {
     private String id;
     private Pet pet;
 
+    public Client() {
+
+    }
+
     public Client(String id, Pet pet) {
         this.id = id;
         this.pet = pet;
@@ -28,6 +32,6 @@ public class Client {
     }
 
     public void removePet() {
-        this.pet = null;
+        this.pet = new Pet();
     }
 }
