@@ -24,21 +24,23 @@ public class Clinic {
         }
     }
 
-    public ArrayList<Client> findClientByPetsName(final String name) {
-        ArrayList<Client> clientsByPetsName = new ArrayList<>();
+    public Client[] findClientByPetsName(final String name) {
+        int size = this.clients.length;
+        Client[] clientsByPetsName = new Client[size];
         for(int i = 0; i < this.clients.length; i++) {
-            if (this.clients[i].getPet().getName().equals(name)) {
-                clientsByPetsName.add(this.clients[i]);
+            if (this.clients[i] != null && this.clients[i].getPet().getName().equals(name)) {
+                clientsByPetsName[i] = this.clients[i];
             }
         }
         return clientsByPetsName;
     }
 
-    public ArrayList<Client> findClientById(final String id) {
-        ArrayList<Client> clientsById = new ArrayList<>();
+    public Client[] findClientById(final String id) {
+        int size = this.clients.length;
+        Client[] clientsById = new Client[size];
         for (int i = 0; i < this.clients.length; i++) {
-            if (this.clients[i].getId().equals(id)) {
-                clientsById.add(this.clients[i]);
+            if (this.clients[i] != null && this.clients[i].getId().equals(id)) {
+                clientsById[i] = this.clients[i];
             }
         }
         return clientsById;
@@ -46,7 +48,7 @@ public class Clinic {
 
     public void editClientsId(final String oldId, final String newId) {
         for (int i = 0; i < this.clients.length; i++) {
-            if (this.clients[i].getId().equals(oldId)) {
+            if (this.clients[i] != null && this.clients[i].getId().equals(oldId)) {
                 this.clients[i].setId(newId);
             }
         }
@@ -54,7 +56,7 @@ public class Clinic {
 
     public void editPetsNameByClientId(final String id, final String newPetName) {
         for (int i = 0; i < this.clients.length; i++) {
-            if (this.clients[i].getId().equals(id)) {
+            if (this.clients[i] != null && this.clients[i].getId().equals(id)) {
                 this.clients[i].getPet().setName(newPetName);
             }
         }
@@ -62,15 +64,15 @@ public class Clinic {
 
     public void removeClientById(final String id) {
         for (int i = 0; i < this.clients.length; i++) {
-            if (this.clients[i].getId().equals(id)) {
-                this.clients[i] = new Client();
+            if (this.clients[i] != null && this.clients[i].getId().equals(id)) {
+                this.clients[i] = null;
             }
         }
     }
 
     public void removePetFromClient(final String id) {
         for (int i = 0; i < this.clients.length; i++) {
-            if (this.clients[i].getId().equals(id)) {
+            if (this.clients[i] != null && this.clients[i].getId().equals(id)) {
                 this.clients[i] = new Client(this.clients[i].getId(), new Pet());
             }
         }
