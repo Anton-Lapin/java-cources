@@ -6,8 +6,6 @@ package clinic;
  * @sinse March 16, 2018
  */
 
-import java.util.ArrayList;
-
 public class ClinicRunner {
 
     public static void main(String[] args) {
@@ -22,15 +20,7 @@ public class ClinicRunner {
         clinic.addNewClient(4, new Client("Sidorov", new Pet(new CatDog(
                 new Cat("Vaska"), new Dog("Chappy")))));
         System.out.println("------------");
-        clients = clinic.getClients();
-
-        for (int i = 0; i < clients.length; i++) {
-            if (clients[i] != null) {
-                System.out.println("id: " + i + " client: " + clients[i].getId() + " pet: " +
-                    clients[i].getPet().getName());
-            }
-        }
-
+        clinic.info();
         System.out.println("------------");
         clients = clinic.findClientByPetsName("Vaska");
 
@@ -51,39 +41,27 @@ public class ClinicRunner {
         }
         System.out.println("-------------");
         System.out.println("Before edit client id");
-        clients = clinic.getClients();
-        for (int i = 0; i < clients.length; i++) {
-            if (clients[i] != null) {
-                System.out.println("pos: " + i + " client: " + clients[i].getId() + " pet: "
-                        + clients[i].getPet().getName());
-            }
-        }
-        clinic.editClientsId("Ivanov2", "Sidorov");
+        clinic.info();
+        clinic.editClientsId("Ivanov2", "Kozlov");
         System.out.println("After edit client id");
-        clients = clinic.getClients();
-        for (int i = 0; i < clients.length; i++) {
-            if (clients[i] != null) {
-                System.out.println("pos: " + i + " client: " + clients[i].getId() + " pet: "
-                        + clients[i].getPet().getName());
-            }
-        }
+        clinic.info();
         System.out.println("--------------");
         System.out.println("before edit pets name");
-        clients = clinic.getClients();
-        for (int i = 0; i < clients.length; i++) {
-            if (clients[i] != null) {
-                System.out.println("pos: " + i + " client: " + clients[i].getId() + " pet: "
-                        + clients[i].getPet().getName());
-            }
-        }
+        clinic.info();
         System.out.println("After edit pets name");
         clinic.editPetsNameByClientId("Petrov", "Mos`ka");
-        clients = clinic.getClients();
-        for (int i = 0; i < clients.length; i++) {
-            if (clients[i] != null) {
-                System.out.println("pos: " + i + " client: " + clients[i].getId() + " pet: "
-                        + clients[i].getPet().getName());
-            }
-        }
+        clinic.info();
+        System.out.println("---------------");
+        System.out.println("before removing by id");
+        clinic.info();
+        clinic.removeClientById("Petrov");
+        System.out.println("after removing by id");
+        clinic.info();
+        System.out.println("----------------");
+        System.out.println("before removing pet by client id");
+        clinic.info();
+        clinic.removePetFromClient("Sidorov");
+        System.out.println("after removing pet by client id");
+        clinic.info();
     }
 }

@@ -6,8 +6,6 @@ package clinic;
  * @since March 16, 2018
  */
 
-import java.util.ArrayList;
-
 public class Clinic {
 
     private final Client[] clients;
@@ -80,5 +78,14 @@ public class Clinic {
 
     public Client[] getClients() {
         return this.clients;
+    }
+
+    public void info() {
+        for (int i = 0; i < this.clients.length; i++) {
+            if (clients[i] != null) {
+                System.out.println("id: " + i + " client: " + clients[i].getId() +
+                " pet: " + clients[i].getPet().getName());
+            }
+        }
     }
 }

@@ -10,14 +10,12 @@ public class Client {
     private String id;
     private Pet pet;
 
-    public Client() {
-
-    }
-
     public Client(String id, Pet pet) {
         this.id = id;
         this.pet = pet;
     }
+
+    public Client() {}
 
     public Pet getPet() {
         return pet;
