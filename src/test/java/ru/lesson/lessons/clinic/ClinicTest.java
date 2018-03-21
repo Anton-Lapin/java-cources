@@ -9,19 +9,26 @@ import org.junit.Test;
  */
 public class ClinicTest {
 
-    @Test
-    public void addNewClient1() throws Exception {
+    @Test(expected = UserException.class)
+    public void addNewClient1() throws UserException {
         Clinic clinic = new Clinic(10);
         clinic.addNewClient(0, new Client("0", new Pet(new Cat("Vaska"))));
         clinic.info();
         clinic.addNewClient(0, new Client("1", new Pet()));
+        clinic.info();
+    }
+
+    @Test
+    public void addNewClient2() throws UserException {
+        Clinic clinic = new Clinic(10);
+        clinic.addNewClient(0, new Client("0", new Pet(new Cat("Vaska"))));
         clinic.info();
         clinic.addNewClient(10, new Client("10", new Pet()));
         clinic.info();
     }
 
     @Test
-    public void findClientByPetsName() throws Exception {
+    public void findClientByPetsName1() throws UserException {
         Clinic clinic = new Clinic(10);
         clinic.addNewClient(0, new Client("0", new Pet(new Cat("Vaska"))));
         clinic.addNewClient(5, new Client("5", new Pet(new Dog("Chappy"))));
@@ -34,6 +41,15 @@ public class ClinicTest {
                         clients[i].getPet().getName());
             }
         }
+    }
+
+    @Test(expected = UserException.class)
+    public void findClientByPetsName2() throws UserException {
+        Clinic clinic = new Clinic(10);
+        clinic.addNewClient(0, new Client("0", new Pet(new Cat("Vaska"))));
+        clinic.addNewClient(5, new Client("5", new Pet(new Dog("Chappy"))));
+        clinic.info();
+        Client[] clients;
         System.out.println("Not Ok...");
         clients = clinic.findClientByPetsName("Murka");
         for (int i = 0; i < clients.length; i++) {
@@ -45,7 +61,7 @@ public class ClinicTest {
     }
 
     @Test
-    public void findClientById() throws Exception {
+    public void findClientById1() throws UserException {
         Clinic clinic = new Clinic(10);
         clinic.addNewClient(0, new Client("0", new Pet(new Cat("Vaska"))));
         clinic.addNewClient(5, new Client("5", new Pet(new Dog("Chappy"))));
@@ -58,6 +74,15 @@ public class ClinicTest {
                         clients[i].getPet().getName());
             }
         }
+    }
+
+    @Test(expected = UserException.class)
+    public void findClientById2() throws UserException {
+        Clinic clinic = new Clinic(10);
+        clinic.addNewClient(0, new Client("0", new Pet(new Cat("Vaska"))));
+        clinic.addNewClient(5, new Client("5", new Pet(new Dog("Chappy"))));
+        clinic.info();
+        Client[] clients;
         System.out.println("Not Ok...");
         clients = clinic.findClientById("3");
         for (int i = 0; i < clients.length; i++) {

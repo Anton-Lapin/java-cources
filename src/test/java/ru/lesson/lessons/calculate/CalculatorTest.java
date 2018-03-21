@@ -31,16 +31,16 @@ public class CalculatorTest {
         Assert.assertEquals(-5.0f, calculator.getResult());
     }
 
-    @Test
-    public void division1() throws Exception {
+    @Test(expected = IllegalArgumentException.class)
+    public void division1() {
         Calculator calculator = new Calculator();
         String[] args = {"1", "-5"};
         calculator.division(args);
         Assert.assertEquals(-0.2f, calculator.getResult());
     }
 
-    @Test
-    public void division2() throws Exception {
+    @Test(expected = IllegalArgumentException.class)
+    public void division2() {
         Calculator calculator = new Calculator();
         String[] args = {"1", "0"};
         calculator.division(args);
