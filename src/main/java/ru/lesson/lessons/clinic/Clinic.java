@@ -141,11 +141,17 @@ public class Clinic {
      * This method prints client's list
      */
     public void info() {
+        System.out.println("=================================================================");
+        System.out.println("|                     *CLINIC LIST INFO*                        |");
+        System.out.println("=================================================================");
+        System.out.printf("%-7s%-32s%-26s%n","| Id","| Client","| Pet");
+        System.out.println("+------+-------------------------------+------------------------+");
         for (int i = 0; i < this.clients.length; i++) {
             if (clients[i] != null) {
-                System.out.println("id: " + i + " client: " + clients[i].getId() +
-                " pet: " + clients[i].getPet().getName());
+                System.out.printf("%-1s%-5d%-32s%-26s%n","| ",i,"| " + clients[i].getId(),
+                        "| " + clients[i].getPet().getName());
             }
         }
+        System.out.println("+------+-------------------------------+------------------------+");
     }
 }
