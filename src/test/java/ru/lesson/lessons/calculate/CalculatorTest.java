@@ -6,6 +6,11 @@ import org.junit.Test;
 import static jdk.nashorn.internal.objects.Global.Infinity;
 import static org.junit.Assert.*;
 
+/**
+ * This class contains tests for Calculator class
+ * @author Anton Lapin
+ * @since March 21, 2018
+ */
 public class CalculatorTest {
     @Test
     public void sum() throws Exception {
@@ -31,7 +36,7 @@ public class CalculatorTest {
         Assert.assertEquals(-5.0f, calculator.getResult());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void division1() {
         Calculator calculator = new Calculator();
         String[] args = {"1", "-5"};
