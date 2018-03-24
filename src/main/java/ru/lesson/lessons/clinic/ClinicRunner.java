@@ -36,56 +36,52 @@ public class ClinicRunner {
         do {
             System.out.println("Please, enter command:\n-1(set size);\n-2(add client);\n-3(edit client);\n" +
                     "-4(edit pet);\n-5(remove client);\n-6(remove pet);\n-0(exit)");
-            int choice = Integer.valueOf(this.scanner.nextLine());
-            switch (choice) {
-                case 1:
-                    try {
+            try {
+                int choice = checkInputCommand();
+                switch (choice) {
+                    case 1:
                         settingSizeOfClientsList();
-                    } catch (UserException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case 2:
-                    try {
+                        break;
+                    case 2:
                         addingClientsIntoClinicList();
-                    } catch (UserException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case 3:
-                    try {
+                        break;
+                    case 3:
                         editingClients();
-                    } catch (UserException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case 4:
-                    try {
+                        break;
+                    case 4:
                         editingPets();
-                    } catch (UserException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case 5:
-                    try {
+                        break;
+                    case 5:
                         removingClient();
-                    } catch (UserException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case 6:
-                    try {
+                        break;
+                    case 6:
                         removingPets();
-                    } catch (UserException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case 0:
-                    System.out.println("Exit from program? - yes/no");
-                    exit = this.scanner.nextLine();
+                        break;
+                    case 0:
+                        System.out.println("Exit from program? - yes/no");
+                        exit = this.scanner.nextLine();
+                }
+            } catch (UserException e) {
+                System.out.println(e.getMessage());
             }
         } while (exit.equals("no"));
         System.out.println("Good bye!");
+    }
+
+    /**
+     * This method checks input command on number containing
+     * @return number
+     */
+    private int checkInputCommand() throws UserException {
+        int choiceAsInt;
+        String[] symbs = this.choice.split("");
+        for(int i = 0; i < symbs.length; i++) {
+            if(symbs[i].matches("^\\D*$")){
+                throw new UserException("Incorrect input data. Please, enter a number only");
+            }
+        }
+        choiceAsInt = Integer.valueOf(this.choice);
+        return choiceAsInt;
     }
 
     /**
